@@ -1,0 +1,60 @@
+#!/bin/sh
+
+#
+# chkconfig: %(run_levels)d %(start_order)d %(stop_order)d
+# description: %(description)s
+#
+
+[ -f "/etc/rc.d/init.d/functions" ] && . /etc/rc.d/init.d/functions
+
+PGREP="/usr/bin/pgrep -f"
+
+NAME="%(name)s"
+OPTS="%(options)s"
+BIN="%(binary)s"
+
+LOGFILE="/var/log/${NAME}.log"
+
+status() {
+    PIDS=`${PGREP} "${BIN} ${OPTS}" | xargs`
+    if [ "$PIDS" == "" ]; then
+        echo "${NAME} not running!"
+    else
+        echo "${NAME} running... [ ${PIDS} ]"
+    fi
+}
+
+start() {
+    ${BIN} ${OPTS} >> ${LOGFILE} 2>&1 &
+    sleep 2;
+    status;
+
+}
+stop() {
+    PIDS=`${PGREP} "${BIN} ${OPTS}" | sort -r`
+    for pid in $PIDS; do
+        kill $pid;
+    done
+    status;
+}
+
+case "$1" in
+    start)
+        start;
+        ;;
+    stop)
+        stop;
+        ;;
+    status)
+        status;
+        ;;
+    restart)
+        stop;
+        sleep 2;
+        start;
+        ;;
+    *)
+        echo "$0 [start|stop|restart|status]"
+        exit 1;
+esac
+exit 0
