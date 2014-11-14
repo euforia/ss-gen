@@ -6,7 +6,7 @@ This tool generates basic startup scripts for RHEL based linux distributions wit
 
 Usage
 -----
-``
+::
 ss-gen.py [options]
 
 Options:
@@ -21,4 +21,3 @@ Options:
                         Start order
   --stop-order=STOP_ORDER
                         Shutdown order
-``
