@@ -12,9 +12,9 @@ Distributions:
       - libzmq3
 
       build_cmd:
-      - sudo mkdir -pf ./build/opt/ss-gen
-      - sudo cp ss-gen.py ./build/opt/ss-gen/
-      - sudo cp startup-script.template ./build/opt/ss-gen/
+      - mkdir -pf ./build/ss-gen/opt/ss-gen
+      - cp ss-gen.py ./build/ss-gen/opt/ss-gen/
+      - cp startup-script.template ./build/ss-gen/opt/ss-gen/
 
       post_install:
       - chmod -R 0775 /opt/ss-gen
