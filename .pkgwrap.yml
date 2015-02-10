@@ -1,0 +1,20 @@
+Package:
+    build_env: python
+
+Distributions:
+    - name: ubuntu
+      release: 14.04
+
+      build_deps:
+      - libzmq3-dev
+      
+      deps:
+      - libzmq3
+
+      build_cmd:
+      - sudo mkdir -pf ./build/opt/ss-gen
+      - sudo cp ss-gen.py ./build/opt/ss-gen/
+      - sudo cp startup-script.template ./build/opt/ss-gen/
+
+      post_install:
+      - chmod -R 0775 /opt/ss-gen
