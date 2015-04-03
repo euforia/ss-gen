@@ -22,7 +22,4 @@ Distributions:
 
 Notifications:
     irc:
-    - chat.freenode.net#ipkgio
-
-    email:
-    - euforia@gmail.com
+    - chat.freenode.net#ipkg-io
