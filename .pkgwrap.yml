@@ -23,3 +23,6 @@ Distributions:
 Notifications:
     irc:
     - chat.freenode.net#ipkg-io
+
+    email:
+    - euforia@gmail.com
