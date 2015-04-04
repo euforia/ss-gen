@@ -25,6 +25,8 @@ status() {
 }
 
 start() {
+    PIDS=`${PGREP} "${BIN} ${OPTS}" | xargs`
+    #if [ ]
     ${BIN} ${OPTS} >> ${LOGFILE} 2>&1 &
     sleep 2;
     status;
